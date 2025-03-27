@@ -19,23 +19,39 @@ Administrador de Base de Datos: Oscar Martin Espinosa Romero.
 ![imagen](https://github.com/user-attachments/assets/0a624903-1f58-4162-8747-ffda64f11d27)
 
 Requerimientos funcionales:
+
 ●Registro de usuarios: Permitir que los usuarios creen cuentas para acceder a la aplicación. 
+
 ●Búsqueda de lugares: Implementar un sistema de búsqueda que permita a los usuarios encontrar lugares por categorías y palabras clave. 
+
 ●Creación de perfiles de lugares: Permitir al administrador agregar, modificar y eliminar nuevos destinos, así como administrar comentarios y valoraciones. 
+
 ●Espacio de comentarios: Ofrecer una sección donde los usuarios puedan dejar comentarios, valoraciones y sugerencias. 
+
  
 Requerimientos de usabilidad: 
+
 ●Interfaz intuitiva: El diseño de la aplicación debe ser fácil de usar y navegar para los turistas. 
+
 ●Responsabilidad: Garantizar que la aplicación sea accesible desde dispositivos móviles, tabletas y computadoras de escritorio. 
-	
+
+ 
 Requerimientos de seguridad: 
+
 ●Protección de datos: Asegurar la privacidad de la información de los usuarios y la integridad de los datos almacenados. 
+
 ●Autenticación de usuarios: Implementar un sistema robusto de autenticación y autorización de usuarios. 
+
 Requerimientos de rendimiento: 
+
 ●Velocidad de carga: Garantizar que la aplicación cargue rápidamente para una experiencia óptima del usuario. 
+
 ●Escalabilidad: Diseñar la aplicación para que pueda manejar un gran volumen de usuarios concurrentes. 
 
+
 Requerimientos de mantenimiento:  
+
 ●Facilidad de actualización: Permitir al administrador realizar modificaciones en el contenido de manera sencilla. 
+
 ●Soporte técnico: Establecer un sistema de soporte para resolver problemas técnicos que puedan surgir. 
 
