@@ -15,3 +15,5 @@ Diseñador: Alexis Armando Peralta Ramírez.
 Desarrollador: José Manuel García Morales.
 
 Administrador de Base de Datos: Oscar Martin Espinosa Romero.
+
+![imagen](https://github.com/user-attachments/assets/0a624903-1f58-4162-8747-ffda64f11d27)
