@@ -8,11 +8,7 @@ Además, la aplicación contará con un espacio dedicado a comentarios, valoraci
  
  
  
-Líder:  
-Miguel Angel Díaz Rivera 
- Diseñador: 
-Alexis Armando Peralta Ramírez 
-Desarrollador  
-José Manuel García Morales
-  Administrador de Base de Datos: 
-Oscar Martin Espinosa Romero  
+Líder: Miguel Angel Díaz Rivera.
+Diseñador: Alexis Armando Peralta Ramírez.
+Desarrollador: José Manuel García Morales.
+Administrador de Base de Datos: Oscar Martin Espinosa Romero.
