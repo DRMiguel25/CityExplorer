@@ -1,0 +1,69 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Ocupa toda la pantalla */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Color de fondo opcional */
+}
+
+/* Contenedor centrado */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* Espaciado entre elementos */
+    border: 3px solid black; /* Borde negro */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    
+    background-color: white; /* Fondo blanco */
+}
+
+
+/* Espaciado en los títulos */
+h1 {
+    margin: 5px 0;
+}
+
+p {
+    margin: 5px 0 10px;
+}
+
+/* Agrupar botones para mejor distribución */
+.buttons {
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+}
+
+/* Botones */
+.button {
+    width: 150px; /* Reducido para mejor ajuste */
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.login {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.register {
+    background-color: #0056b3;
+    color: white;
+}
+
+.guest {
+    background: none;
+    border: none;
+    color: gray;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+}

@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';  // Importa RouterModule
 
+import { AppRoutingModule } from './app-routing.module';  // Si tienes un módulo de rutas
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { UsuariosModule } from './usuarios/usuarios.module';
+import { CategoriasComponent } from './vistas/components/categorias/categorias.component'; // ✅ Importar el módulo
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, CategoriasComponent,],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    provideClientHydration(withEventReplay())
+    RouterModule,  // Asegúrate de importar RouterModule aquí
+    AppRoutingModule,  // Asegúrate de agregar el AppRoutingModule si lo tienes
+    BrowserAnimationsModule,
+
+    UsuariosModule
   ],
   bootstrap: [AppComponent]
 })
