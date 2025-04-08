@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="top-bar">
+        <button class="menu-icon">☰</button>
+        <div class="buttons-container">
+            <button class="btn btn-primary" (click)="crearAnuncio()">Crear nuevo anuncio</button>
+            <button class="btn btn-outline" (click)="cerrarSesion()">
+                <span>↪</span>
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h1>Bienvenido Usuario</h1>
+        
+        <h2 class="announcements-title">Anuncios Creados</h2>
+        
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div>Parroquia</div>
+                    <div class="card-date">DD/MM/YY</div>
+                </div>
+                <img src="/api/placeholder/400/320" alt="Parroquia de San Miguel de Allende" class="card-img">
+                <div class="card-body">
+                    <div class="card-title">Descripción</div>
+                    <div class="card-text">Es el principal sitio de atracción turística en san miguel de allende</div>
+                    <div class="card-actions">
+                        <button class="btn btn-delete">Eliminar</button>
+                        <button class="btn btn-edit">Editar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

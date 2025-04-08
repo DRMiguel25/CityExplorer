@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpLaravelService } from "../../../http.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -8,17 +11,63 @@ import { Router } from '@angular/router';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent {
+  registroForm: FormGroup;
 
-  constructor(private router: Router) {}
+  roles = [
+    { id: 1, nombre: 'Administrador' },
+    { id: 2, nombre: 'Usuario' },
+    { id: 3, nombre: 'Anunciante' },
+  ];
 
-  login() {
-    console.log('inicio');
-    this.router.navigate(['/login']);  // Redirige a la ruta de inicio-sesion
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private service: HttpLaravelService
+  ) {
+    this.registroForm = this.fb.group({
+      nombre: ['', Validators.required],
+      apellidoP: ['', Validators.required],
+      apellidoM: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      id_rol: ['', Validators.required],
+    });
   }
 
-  homeScreen() {
-    console.log('Navegar como invitado');
-    this.router.navigate(['/app-home']);  // Redirige a la ruta de home
-    // Aquí puedes manejar la navegación como invitado si lo deseas
+  registrar() {
+    if (this.registroForm.invalid) {
+      this.registroForm.markAllAsTouched();
+      return;
+    }
+
+    const payload = this.registroForm.value;
+    console.log('Enviando JSON al backend:', payload);
+
+    this.service.Service_Post('user', 'register', payload).subscribe({
+      next: (data: any) => {
+        if (data.estatus) {
+          Swal.fire('¡Éxito!', 'Usuario registrado correctamente', 'success');
+          this.router.navigate(['/home-anunciante']);
+        } else {
+          Swal.fire('Error', data.mensaje || 'No se pudo registrar el usuario', 'error');
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        Swal.fire('Error', 'Ocurrió un error en la conexión con el servidor', 'error');
+      }
+    });
+  }
+
+  login() {
+    this.router.navigate(['/login']);
+  }
+
+  get f() {
+    return this.registroForm.controls;
+  }
+
+  isInvalid(field: string): boolean {
+    return this.f[field].invalid && this.f[field].touched;
   }
 }

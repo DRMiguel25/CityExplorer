@@ -1,91 +1,32 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpLaravelService {
-  private baseUrl = 'http://localhost:8000/api';
+  private _url = 'http://127.0.0.1:8000/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http:HttpClient) {}
 
-  // Autenticación
-  login(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/user/login`, data);
-  }
-  register(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/user/register`, data);
-  }
-  logout(): Observable<any> {
-    return this.http.post(`${this.baseUrl}/usuario/logout`, {}, { withCredentials: true });
-  }
-  getCurrentUser(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/usuario/current`, { withCredentials: true });
+  Service_Get(Modelo: string, Dato: string | number){
+    return this.http.get(`${this._url}/${Modelo}/${Dato}`);
   }
 
-  // Usuarios
-  getUsuarios(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/usuario`, { withCredentials: true });
-  }
-  getUsuarioById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/usuario/${id}`, { withCredentials: true });
-  }
-  updateUsuario(id: number, data: any): Observable<any> {
-    return this.http.patch(`${this.baseUrl}/usuario/${id}`, data, { withCredentials: true });
-  }
-  deleteUsuario(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/usuario/${id}`, { withCredentials: true });
+  Service_Get_Paginator(Modelo: string, Dato: string | number, page: number, rows: number){
+    return this.http.get(`${this._url}/${Modelo}/${Dato}?page=${page}&rows=${rows}`);
   }
 
-  // Roles
-  getRoles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/rol`, { withCredentials: true });
-  }
-  createRol(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/rol`, data, { withCredentials: true });
-  }
-  getRolById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/rol/${id}`, { withCredentials: true });
-  }
-  updateRol(id: number, data: any): Observable<any> {
-    return this.http.patch(`${this.baseUrl}/rol/${id}`, data, { withCredentials: true });
-  }
-  deleteRol(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/rol/${id}`, { withCredentials: true });
+  Service_Post(Modelo: string, Dato: string | number, Parametros: any){
+    console.log(`${this._url}/${Modelo}/${Dato}`, Parametros);
+    return this.http.post(`${this._url}/${Modelo}/${Dato}`, Parametros);
   }
 
-  // Direcciones
-  getDirecciones(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/direccion`, { withCredentials: true });
-  }
-  createDireccion(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/direccion`, data, { withCredentials: true });
-  }
-  getDireccionById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/direccion/${id}`, { withCredentials: true });
-  }
-  updateDireccion(id: number, data: any): Observable<any> {
-    return this.http.patch(`${this.baseUrl}/direccion/${id}`, data, { withCredentials: true });
-  }
-  deleteDireccion(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/direccion/${id}`, { withCredentials: true });
+  Service_Patch(Modelo: string, Dato: string | number, Parametros: any){
+    return this.http.patch(`${this._url}/${Modelo}/${Dato}`, Parametros);
   }
 
-  // Lugares
-  getLugares(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/lugar`, { withCredentials: true });
-  }
-  createLugar(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/lugar`, data, { withCredentials: true });
-  }
-  getLugarById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/lugar/${id}`, { withCredentials: true });
-  }
-  updateLugar(id: number, data: any): Observable<any> {
-    return this.http.patch(`${this.baseUrl}/lugar/${id}`, data, { withCredentials: true });
-  }
-  deleteLugar(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/lugar/${id}`, { withCredentials: true });
+  Service_Delete(Modelo: string, Dato: string | number){
+    return this.http.delete(`${this._url}/${Modelo}/${Dato}`);
   }
 }

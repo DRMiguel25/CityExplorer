@@ -1,23 +1,36 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';  // Importa RouterModule
-
-import { AppRoutingModule } from './app-routing.module';  // Si tienes un módulo de rutas
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { errorInterceptor } from './error.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';  // Para directivas comunes como ngClass, ngIf
 
 import { UsuariosModule } from './usuarios/usuarios.module';
-import { CategoriasComponent } from './vistas/components/categorias/categorias.component'; // ✅ Importar el módulo
+import { VistasModule } from './vistas/vistas.module'; // ✅ Importar el módulo de vistas
+
 @NgModule({
-  declarations: [AppComponent, CategoriasComponent,],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule,  // Asegúrate de importar RouterModule aquí
-    AppRoutingModule,  // Asegúrate de agregar el AppRoutingModule si lo tienes
+    AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
 
-    UsuariosModule
+    UsuariosModule,
+    VistasModule
+  ],
+  providers: [
+    provideClientHydration(),
+    provideHttpClient(
+      withInterceptors([errorInterceptor]),
+      withFetch()
+    )
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

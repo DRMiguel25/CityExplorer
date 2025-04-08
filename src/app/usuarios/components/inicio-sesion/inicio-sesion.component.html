@@ -2,14 +2,30 @@
     <button class="back-button" (click)="login()">&#8592;</button>
     <h1 class="title">Bienvenido</h1>
     <p class="subtitle">Inicia sesión para continuar</p>
-    <form class="login-form">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" placeholder="Correo electrónico">
+    
+    <form class="login-form" [formGroup]="InicioSesionFormulario" (ngSubmit)="onLoggedin()">
         
+        <!-- correo -->
+        <label for="correo">Correo electrónico</label>
+        <input type="correo" id="correo" formControlName="correo" placeholder="Correo electrónico" 
+               class="form-control" [ngClass]="{'is-invalid': isValid('correo')}">
+        <div *ngIf="f['correo'].errors && f['correo'].touched" class="form-text text-danger">
+            <div *ngIf="f['correo']?.errors?.['required']">El correo es obligatorio</div>
+            <div *ngIf="f['correo']?.errors?.['correo']">El correo no es válido</div>
+        </div>
+        
+        <!-- Password -->
         <label for="password">Contraseña</label>
-        <input type="password" id="password" placeholder="Contraseña">
+        <input type="password" id="password" formControlName="password" placeholder="Contraseña" 
+               class="form-control" [ngClass]="{'is-invalid': isValid('password')}">
+        <div *ngIf="f['password'].errors && f['password'].touched" class="form-text text-danger">
+            <div *ngIf="f['password']?.errors?.['required']">La contraseña es obligatoria</div>
+        </div>
         
-        <button type="submit" class="login-button" (click)="homeScreen()">Iniciar sesión</button>
+        <!-- Botón de inicio de sesión -->
+        <button type="submit" class="login-button">Iniciar sesión</button>
     </form>
+
     <p class="forgot-password">Olvidaste la contraseña</p>
 </div>
+    
