@@ -13,7 +13,7 @@ import { HomeAnuncianteComponent } from '../vistas/components/home-anunciante/ho
 import { CrearActualizarAnuncioComponent } from '../vistas/components/crear-actualizar-anuncio/crear-actualizar-anuncio.component';
 import { navbarComponent } from '../vistas/components/navbar/navbar.component';
 import { VistaDetalladaAnuncioComponent } from '../vistas/components/vista-detallada-anuncio/vista-detallada-anuncio.component';
-
+import { AyudaComponent } from '../vistas/components/ayuda/ayuda.component';
 
 const routes: Routes = [
   { path: 'inicio-sesion', component: InicioSesionComponent },
@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'crear-actualizar-anuncio/:id', component: CrearActualizarAnuncioComponent },
   { path: 'vista-detallada-anuncio/:id', component: VistaDetalladaAnuncioComponent },
   { path: 'navbar', component: navbarComponent },
+  { path: 'ayuda', component: AyudaComponent },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },  // ✅ Ruta por defecto al login
 ];
