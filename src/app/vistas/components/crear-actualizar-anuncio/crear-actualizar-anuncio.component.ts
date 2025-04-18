@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpLaravelService } from "../../../http.service";
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'crear-actualizar-anuncio',
@@ -14,7 +15,6 @@ export class CrearActualizarAnuncioComponent implements OnInit {
   anuncioForm: FormGroup;
   ID: number | null = null;
   direccion: any; // Aquí guardamos los datos de la dirección
-
 
   diasServicioOpciones: string[] = ['Lunes-Viernes', 'Lunes-Sábado', 'Lunes-Domingo'];
   categoriasOpciones: string[] = [
@@ -39,7 +39,8 @@ export class CrearActualizarAnuncioComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private service: HttpLaravelService
+    private service: HttpLaravelService,
+    private authService: AuthService  // 👈 AQUI
   ) {
     this.anuncioForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -195,14 +196,32 @@ export class CrearActualizarAnuncioComponent implements OnInit {
     if (this.ID) {
       this.service.Service_Patch('lugar', this.ID, payload).subscribe(() => {
         Swal.fire('Actualizado', 'El anuncio se actualizó correctamente', 'success');
-        this.router.navigate(['/home-anunciante/:id_usuario']);
+
+        const id_usuario = this.authService.getIdUsuario();
+        console.log('👤 ID del usuario:', id_usuario);
+        if (isNaN(id_usuario)) {
+          console.error('ID de usuario inválido');
+          return;
+        } else {
+          this.router.navigate([`/home-anunciante`, id_usuario]);
+        }    
+
       });
     } else {
       this.service.Service_Post('lugar', 'con-direccion', payload).subscribe({
         next: (data: any) => {
             Swal.fire('¡Éxito!', 'Lugar creado correctamente', 'success');
             console.log('Lugar creado:', data);
-            this.router.navigate(['/home-anunciante/:id_usuario']);
+            
+            const id_usuario = this.authService.getIdUsuario();
+            console.log('👤 ID del usuario:', id_usuario);
+            if (isNaN(id_usuario)) {
+              console.error('ID de usuario inválido');
+              return;
+            } else {
+              this.router.navigate([`/home-anunciante`, id_usuario]);
+            }        
+
         },
         error: (err) => {
           console.error('Error al crear el lugar:', err);
@@ -219,6 +238,13 @@ export class CrearActualizarAnuncioComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/home-anunciante/:id_usuario']);
+    const id_usuario = this.authService.getIdUsuario();
+    console.log('👤 ID del usuario:', id_usuario);
+    if (isNaN(id_usuario)) {
+      console.error('ID de usuario inválido');
+      return;
+    } else {
+      this.router.navigate([`/home-anunciante`, id_usuario]);
+    }
   }
 }

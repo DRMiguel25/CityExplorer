@@ -3,6 +3,8 @@ import { HttpLaravelService } from "../../../http.service";
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from '../../../auth.service';
+
 
 import Swal from 'sweetalert2';
 
@@ -19,7 +21,8 @@ export class InicioSesionComponent {
     private fb: FormBuilder,
     private service: HttpLaravelService,
     private router: Router,
-    private localStorage: LocalstorageService
+    private localStorage: LocalstorageService,
+    private authService: AuthService  // ← Aquí
   ) {
     this.InicioSesionFormulario = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
@@ -55,6 +58,9 @@ export class InicioSesionComponent {
           if (userId != null) {
             // 🚀 Redirigir con el ID del usuario como parámetro
             console.log('👉 ID de usuario recibido:', userId);
+              // 👇 Aquí lo guardas para todo el app
+            this.authService.setIdUsuario(userId);
+            console.log('✅ ID de usuario guardado en AuthService:', userId);
             this.router.navigate(['/home-anunciante', userId]);
           } else {
             console.warn('⚠️ No se recibió el ID del usuario en la respuesta');
@@ -98,5 +104,15 @@ export class InicioSesionComponent {
     this.router.navigate(['/login']);  // Redirige a la ruta de inicio-sesion
   }
 
-
+  mostrarAlertaOlvido() {
+    Swal.fire({
+      icon: 'info',
+      title: 'Función no disponible',
+      text: 'Esta función estará disponible en una futura versión. ¡Gracias por tu paciencia!',
+      footer: '<i>Estamos trabajando en ello</i>',
+      confirmButtonText: 'Entendido',
+      confirmButtonColor: '#3085d6'
+    });
+  }
+  
 }
