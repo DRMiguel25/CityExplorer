@@ -21,6 +21,9 @@ import { VistaDetalladaAnuncioComponent } from './components/vista-detallada-anu
 
 import { VistaDetalladaDestinoComponent } from './components/vista-detallada-destino/vista-detallada-destino.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
+
+import { PagoAnuncioComponent } from './components/pagar-anuncio/pagar-anuncio.component';
+
 @NgModule({
   declarations: [
     CategoriasComponent,
@@ -32,7 +35,8 @@ import { AyudaComponent } from './components/ayuda/ayuda.component';
     CategoriaVistaComponent,
     DestinosVistaComponent,
     VistaDetalladaDestinoComponent,
-    AyudaComponent
+    AyudaComponent,
+    PagoAnuncioComponent
   ],
   imports: [
     CommonModule,

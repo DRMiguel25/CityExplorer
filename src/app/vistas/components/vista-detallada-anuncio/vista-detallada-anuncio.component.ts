@@ -144,15 +144,8 @@ export class VistaDetalladaAnuncioComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33'
     }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Función no disponible',
-          text: 'Esta función no está disponible en esta versión. Se agregará en una futura versión.',
-          icon: 'info',
-          confirmButtonText: 'Entendido',
-          confirmButtonColor: '#3085d6'
-        });
-      }
+      this.router.navigate(['/pagar-anuncio', this.lugar.id_lugar]);
+      console.log("Pagar anuncio con el id: ", this.lugar.id_lugar, "...");
     });
   }
   

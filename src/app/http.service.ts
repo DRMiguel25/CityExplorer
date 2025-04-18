@@ -62,4 +62,22 @@ export class HttpLaravelService {
     return this.http.get<Lugar>(`${this._url}/lugar/${id}`);
   }
 
+  Service_Post_Pago(id_lugar: number, id_metodo_pago: number, stripeToken: string): Observable<any> {
+    const body = {
+      id_lugar: id_lugar,
+      id_metodo_pago: id_metodo_pago,
+      stripeToken: stripeToken
+    };
+  
+    const token = this.storage.getItem('access_token'); // o tu token fijo para pruebas
+  
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+  
+    return this.http.post(`${this._url}/pago/pagar`, body, { headers });
+  }
+    
 }

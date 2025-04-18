@@ -14,6 +14,7 @@ import { CrearActualizarAnuncioComponent } from '../vistas/components/crear-actu
 import { navbarComponent } from '../vistas/components/navbar/navbar.component';
 import { VistaDetalladaAnuncioComponent } from '../vistas/components/vista-detallada-anuncio/vista-detallada-anuncio.component';
 import { AyudaComponent } from '../vistas/components/ayuda/ayuda.component';
+import { PagoAnuncioComponent } from '../vistas/components/pagar-anuncio/pagar-anuncio.component';
 
 const routes: Routes = [
   { path: 'inicio-sesion', component: InicioSesionComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'vista-detallada-anuncio/:id', component: VistaDetalladaAnuncioComponent },
   { path: 'navbar', component: navbarComponent },
   { path: 'ayuda', component: AyudaComponent },
+  { path: 'pagar-anuncio/:id_anuncio', component: PagoAnuncioComponent },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },  // ✅ Ruta por defecto al login
 ];

@@ -28,4 +28,23 @@ export class navbarComponent {
       iconColor: '#3085d6'
     });
   }
+
+  mostrarAlertaCrearCuenta(): void {
+    Swal.fire({
+      icon: 'info',
+      title: '¿Ya tienes una cuenta?',
+      text: 'Para acceder a esta opción necesitas iniciar sesión o crear una cuenta. ¿Deseas ir a la página de inicio de sesión?',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, quiero iniciar sesión',
+      cancelButtonText: 'No, gracias',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      background: '#f9f9f9',
+      iconColor: '#3085d6'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
 }
