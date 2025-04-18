@@ -1,0 +1,26 @@
+<header class="header">
+  <div class="logo" (click)="goHome()">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="45" stroke="black" stroke-width="3" fill="none" />
+      <path d="M20 50 H80" stroke="black" stroke-width="3" />
+      <ellipse cx="50" cy="50" rx="25" ry="45" stroke="black" stroke-width="3" fill="none" />
+    </svg>
+  </div>
+
+  <nav class="nav-menu">
+    <a routerLink="/app-home" routerLinkActive="active">Inicio</a>
+    <a routerLink="/destino-vista" routerLinkActive="active">Destinos</a>
+    <a routerLink="/categorias" routerLinkActive="active">Categorías</a>
+    <a (click)="mostrarAlerta()">Favoritos</a> <!-- Mostrar alerta -->
+    <a (click)="mostrarAlerta()">Visitante</a> <!-- Mostrar alerta -->
+  </nav>
+
+  <div class="user-icon" (click)="mostrarAlerta()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="8" r="4" stroke="black" stroke-width="2" />
+      <path d="M20 19C20 16.2386 16.4183 14 12 14C7.58172 14 4 16.2386 4 19"
+            stroke="black" stroke-width="2" />
+    </svg>
+  </div>
+</header>

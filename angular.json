@@ -24,6 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/proyecto-City-explorer-front-end/",
             "outputPath": "dist/city-explorer",
             "index": "src/index.html",
             "browser": "src/main.ts",

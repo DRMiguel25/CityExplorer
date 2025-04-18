@@ -1,0 +1,87 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Estilo de la tarjeta */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenido dentro de la tarjeta */
+.image-container {
+  text-align: center;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+h1, h2, h3 {
+  color: #333;
+  margin: 0 0 10px;
+}
+.details {
+  margin-top: 20px;
+}
+.button-group {
+  text-align: center;
+  margin-top: 20px;
+}
+.button-group button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+.pay-btn {
+  background-color: #FF9800;
+  color: white;
+}
+.delete-btn {
+  background-color: #F44336;
+  color: white;
+}
+
+/* Botón de Retroceso */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+.back-button:hover {
+  color: #007BFF;
+}
+
+/* Espaciado adicional */
+.card-content {
+  padding: 20px;
+}

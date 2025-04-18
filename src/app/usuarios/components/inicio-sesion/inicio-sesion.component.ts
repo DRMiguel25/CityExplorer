@@ -3,9 +3,9 @@ import { HttpLaravelService } from "../../../http.service";
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
 import Swal from 'sweetalert2';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-inicio-sesion',
   standalone: false,
@@ -44,9 +44,23 @@ export class InicioSesionComponent {
       next: (data: any) => {
         console.log(data);
         if (data.estatus) {
-          this.localStorage.setItem('accessToken', data.access_token);
-          this.router.navigate(['/home-anunciante']);
-        } else {
+          // ✅ Guardar token correctamente
+          console.log('👉 Token recibido del backend:', data.access_token);
+          localStorage.setItem('access_token', data.access_token);
+          console.log('✅ access_token guardado en localStorage');
+
+          // 🚀 Redirigir después del login exitoso
+          const userId = data.data?.id_usuario;
+
+          if (userId != null) {
+            // 🚀 Redirigir con el ID del usuario como parámetro
+            console.log('👉 ID de usuario recibido:', userId);
+            this.router.navigate(['/home-anunciante', userId]);
+          } else {
+            console.warn('⚠️ No se recibió el ID del usuario en la respuesta');
+          }
+        }
+        else {
           Swal.fire({
             icon: "error",
             title: "Error en el inicio de sesión",
@@ -64,7 +78,7 @@ export class InicioSesionComponent {
           showConfirmButton: true,
         });
       }
-    });
+    });    
   }
 
   isValid(field: string): boolean {
