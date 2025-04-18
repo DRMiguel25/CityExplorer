@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpLaravelService } from '../../../http.service';
+import { AuthService } from '../../../auth.service';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -29,7 +31,8 @@ export class VistaDetalladaAnuncioComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private httpLaravelService: HttpLaravelService
+    private httpLaravelService: HttpLaravelService,
+    private authService: AuthService  // 👈 AQUI
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +70,14 @@ export class VistaDetalladaAnuncioComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/home-anunciante']);
+    const id_usuario = this.authService.getIdUsuario();
+    console.log('👤 ID del usuario:', id_usuario);
+    if (isNaN(id_usuario)) {
+      console.error('ID de usuario inválido');
+      return;
+    } else {
+      this.router.navigate([`/home-anunciante`, id_usuario]);
+    }
   }
 
   // Método para obtener el nombre de la categoría basado en el ID
@@ -104,7 +114,14 @@ export class VistaDetalladaAnuncioComponent implements OnInit {
         this.httpLaravelService.Service_Delete('lugar', this.lugar.id_lugar).subscribe({
           next: () => {
             Swal.fire('¡Eliminado!', 'El anuncio ha sido eliminado.', 'success').then(() => {
-              this.router.navigate(['/home-anunciante']); // Redirige después de eliminar
+              const id_usuario = this.authService.getIdUsuario();
+              console.log('👤 ID del usuario:', id_usuario);
+              if (isNaN(id_usuario)) {
+                console.error('ID de usuario inválido');
+                return;
+              } else {
+                this.router.navigate([`/home-anunciante`, id_usuario]);
+              }
             });
           },
           error: (error) => {
