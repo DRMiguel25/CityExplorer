@@ -20,6 +20,7 @@ import { navbarComponent } from './components/navbar/navbar.component';
 import { VistaDetalladaAnuncioComponent } from './components/vista-detallada-anuncio/vista-detallada-anuncio.component';
 
 import { VistaDetalladaDestinoComponent } from './components/vista-detallada-destino/vista-detallada-destino.component';
+import { AyudaComponent } from './components/ayuda/ayuda.component';
 @NgModule({
   declarations: [
     CategoriasComponent,
@@ -30,7 +31,8 @@ import { VistaDetalladaDestinoComponent } from './components/vista-detallada-des
     navbarComponent,
     CategoriaVistaComponent,
     DestinosVistaComponent,
-    VistaDetalladaDestinoComponent
+    VistaDetalladaDestinoComponent,
+    AyudaComponent
   ],
   imports: [
     CommonModule,

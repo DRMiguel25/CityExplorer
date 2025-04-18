@@ -1,0 +1,82 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Evitar scroll externo */
+    background-color: #f8f9fa; /* Fondo claro suave */
+  }
+  
+  /* Modal */
+  .modal {
+    display: block;
+    height: 100vh; /* Altura completa de la ventana */
+    width: 100vw;  /* Ancho completo de la ventana */
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    overflow: hidden; /* Para evitar scroll externo */
+  }
+  
+  /* Diálogo del modal */
+  .modal-dialog {
+    height: 100%; /* Altura completa del modal */
+    width: 100%;  /* Ancho completo del modal */
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Para centrar el contenido */
+  }
+  
+  /* Contenido del modal */
+  .modal-content {
+    height: 100%;
+    width: 100%;
+    border-radius: 0; /* Sin bordes redondeados */
+    overflow-y: auto; /* Permite scroll interno si el contenido es grande */
+    animation: fadeIn 0.3s ease-in-out;
+    padding: 1rem; /* Ajusta el padding si necesitas más espacio */
+    box-sizing: border-box;
+  }
+  
+  /* Cabecera del modal */
+  .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Título del modal */
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0d6efd;
+    margin-top: 70px; /* Ajusta el margen superior para centrar */
+  }
+  
+  /* Pie del modal */
+  .modal-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 1rem;
+  }
+  
+  /* Secciones del cuerpo */
+  .modal-body h5 {
+    color: #0d6efd;
+    font-weight: 600;
+  }
+  
+  .modal-body ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+  
+  /* Animación de entrada */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
