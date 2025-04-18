@@ -195,14 +195,14 @@ export class CrearActualizarAnuncioComponent implements OnInit {
     if (this.ID) {
       this.service.Service_Patch('lugar', this.ID, payload).subscribe(() => {
         Swal.fire('Actualizado', 'El anuncio se actualizó correctamente', 'success');
-        this.router.navigate(['/home-anunciante']);
+        this.router.navigate(['/home-anunciante/:id_usuario']);
       });
     } else {
       this.service.Service_Post('lugar', 'con-direccion', payload).subscribe({
         next: (data: any) => {
             Swal.fire('¡Éxito!', 'Lugar creado correctamente', 'success');
             console.log('Lugar creado:', data);
-            this.router.navigate(['/home-anunciante']);
+            this.router.navigate(['/home-anunciante/:id_usuario']);
         },
         error: (err) => {
           console.error('Error al crear el lugar:', err);
@@ -219,6 +219,6 @@ export class CrearActualizarAnuncioComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/home-anunciante']);
+    this.router.navigate(['/home-anunciante/:id_usuario']);
   }
 }
