@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset básico para eliminar estilos predeterminados */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: transparent; /* Eliminar cualquier fondo predeterminado */
+}
+
+* {
+    box-sizing: border-box; /* Asegura que los tamaños de los elementos sean consistentes */
+}
+.modal-dialog {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; // Para que no se salga del borde en móviles
+    max-width: 500px; // Opcional: para limitar tamaño en pantallas grandes
+  }
+  
+  @media (max-width: 768px) {
+    .modal-dialog {
+      top: 90px; // Menos espacio en móviles
+      width: 95%; // Más adaptable
+    }
+  }
+  

@@ -20,6 +20,8 @@ import { VistasModule } from './vistas/vistas.module'; // ✅ Importar el módul
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
+    BrowserAnimationsModule,
+
 
     UsuariosModule,
     VistasModule

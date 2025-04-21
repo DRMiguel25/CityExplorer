@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2'; // Importar SweetAlert2
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +9,13 @@ import Swal from 'sweetalert2'; // Importar SweetAlert2
   styleUrls: ['./navbar.component.scss']
 })
 export class navbarComponent {
-
   constructor(private router: Router) {}
 
   goHome(): void {
     console.log('Navegando a app-home...');
     this.router.navigate(['/app-home']);
   }
-  // Método para mostrar el mensaje de alerta
+
   mostrarAlerta(): void {
     Swal.fire({
       icon: 'info',
@@ -46,5 +45,18 @@ export class navbarComponent {
         this.router.navigate(['/login']);
       }
     });
+  }
+
+  toggleMenu(): void {
+    console.log('Toggling menu...'); // Para depuración
+    const navMenu = document.querySelector('.nav-menu');
+    const hamburger = document.querySelector('.hamburger');
+    if (navMenu && hamburger) {
+      navMenu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+      console.log('Classes toggled:', navMenu.classList, hamburger.classList); // Para depuración
+    } else {
+      console.error('No se encontraron los elementos .nav-menu o .hamburger');
+    }
   }
 }

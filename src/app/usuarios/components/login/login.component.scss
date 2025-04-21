@@ -1,69 +1,128 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;  /* Ocupa toda la pantalla */
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa; /* Color de fondo opcional */
+/* Fondo principal */
+.background-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://imgs.search.brave.com/XG96xVtOsvlc3t1btHIcTKIv3eA3dGDV_yreLYcfpNo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lc2Nh/cGFkYXMubWV4aWNv/ZGVzY29ub2NpZG8u/Y29tLm14L3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIxLzAyL1Bh/cnJvcXVpYS1kZS1T/YW4tTWlndWVsLmpw/Zw') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -2; /* Coloca esta capa detrás de todo */
 }
 
-/* Contenedor centrado */
+/* Capa semi-transparente */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.325); /* Ajusta la opacidad según desees */
+    z-index: -1; /* Detrás del container pero encima del fondo */
+}
+
+/* Contenedor principal */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 10px; /* Espaciado entre elementos */
-    border: 3px solid black; /* Borde negro */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 10px; /* Bordes redondeados */
-    
-    background-color: white; /* Fondo blanco */
+    gap: 15px;
+    padding: 35px;
+    border-radius: 12px;
+    background-color:  rgba(255, 255, 255, 0.838);;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    width: 380px; /* Ancho fijo */
+    max-width: 100%; /* Responsivo */
+    margin: 0 auto; /* Centra horizontalmente */
+    position: absolute; /* Posición absoluta para controlar ubicación */
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Corrige el centrado */
+    z-index: 1; /* Sobre las capas de fondo */
+    transition: transform 0.6s ease-in-out; /* Animación más suave */
 }
 
+.container:hover {
+    transform: translate(-50%, -52%); /* Movimiento sutil en hover */
+}
 
-/* Espaciado en los títulos */
+.logo img {
+    border-radius: 50%;
+    box-shadow: none; /* Sin sombra inicialmente */
+    transition: box-shadow 0.4s ease-in-out; /* Transición suave para la sombra */
+}
+
+.container:hover .logo img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra en hover */
+}
+
 h1 {
-    margin: 5px 0;
+    margin: 10px 0 0;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+    width: 100%;
 }
 
 p {
-    margin: 5px 0 10px;
+    margin: 5px 0 15px;
+    color: #666;
+    font-size: 16px;
+    width: 100%;
 }
 
-/* Agrupar botones para mejor distribución */
-.buttons {
-    display: flex;
-    gap: 10px; /* Espacio entre botones */
-}
-
-/* Botones */
 .button {
-    width: 150px; /* Reducido para mejor ajuste */
-    padding: 8px;
+    width: 100%;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
-    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out; /* Animación suave para los botones */
 }
 
 .login {
-    background-color: #17a2b8;
+    background-color: #00a3bf;
     color: white;
 }
 
+.login:hover {
+    background-color: #0089a1;
+    transform: translateY(-2px);
+}
+
 .register {
-    background-color: #0056b3;
+    background-color: #1a73e8;
     color: white;
+}
+
+.register:hover {
+    background-color: #0d62d1;
+    transform: translateY(-2px);
 }
 
 .guest {
     background: none;
     border: none;
-    color: gray;
-    text-decoration: underline;
+    color: #666;
+    text-decoration: none;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    transition: color 0.3s ease-in-out; /* Animación suave para el texto */
+    padding: 5px;
+}
+
+.guest:hover {
+    color: #1a73e8;
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: 80%; /* Ajusta el ancho en pantallas pequeñas */
+    }
 }

@@ -16,23 +16,24 @@ export class CrearActualizarAnuncioComponent implements OnInit {
   ID: number | null = null;
   direccion: any; // Aquí guardamos los datos de la dirección
 
-  diasServicioOpciones: string[] = ['Lunes-Viernes', 'Lunes-Sábado', 'Lunes-Domingo'];
+  diasServicioOpciones: string[] = ['Lunes-Viernes', 'Lunes-Sábado', 'Lunes-Domingo','Viernes-Domingo'];
+  // Opciones de categorías
   categoriasOpciones: string[] = [
-    'restaurantes', 'parques', 'iglesias', 'mercados', 'supermercados',
-    'plaza', 'tiendas', 'antros', 'gourmet_urbano'
+    'Restaurantes', 'Parques', 'Iglesias', 'Mercados', 'Supermercados',
+    'plaza', 'Tiendas', 'Antros', 'Puestos Locales'
   ];
 
   // Mapeo entre las categorías y sus respectivos ID en la base de datos
   private categoriaMap: { [key: string]: number } = {
-    'restaurantes': 1,
-    'parques': 2,
-    'iglesias': 3,
-    'mercados': 6,
-    'supermercados': 7,
-    'plaza': 4,
-    'tiendas': 8,
-    'antros': 5,
-    'gourmet_urbano': 9
+    'Restaurantes': 1,
+    'Parques': 2,
+    'Iglesias': 3,
+    'Mercados': 6,
+    'Supermercados': 7,
+    'Plazas': 4,
+    'Tiendas': 8,
+    'Antros': 5,
+    'Puestos_Locales': 9
   };
 
   constructor(
@@ -64,10 +65,10 @@ export class CrearActualizarAnuncioComponent implements OnInit {
 
   ngOnInit(): void {
     // Cargar días y categorías
-    this.diasServicioOpciones = ['Lunes-Viernes', 'Lunes-Sábado', 'Lunes-Domingo'];
+    this.diasServicioOpciones = ['Lunes-Viernes', 'Lunes-Sábado', 'Lunes-Domingo','Jueves-Domingo','Viernes-Domingo','Sabado-Domingo'];
     this.categoriasOpciones = [
-      'restaurantes', 'parques', 'iglesias', 'mercados', 'supermercados',
-      'plaza', 'tiendas', 'antros', 'gourmet_urbano'
+      'Restaurantes', 'Parques', 'Iglesias', 'Mercados', 'SuperMercados',
+      'Plazas', 'Tiendas', 'Antros', 'Puestos Locales'
     ];
   
     // Verifica si viene un ID por la URL y carga el anuncio
@@ -153,7 +154,7 @@ export class CrearActualizarAnuncioComponent implements OnInit {
   
     const formData = this.anuncioForm.value;
   
-    // Convertimos el string de días a array (si ya es array, lo dejamos como está)
+    // Convertimos el string de días a array
     const diasServicio = Array.isArray(formData.dias_servicio)
       ? formData.dias_servicio
       : formData.dias_servicio.split('-').map((dia: string) => dia.trim());
@@ -182,46 +183,29 @@ export class CrearActualizarAnuncioComponent implements OnInit {
       lugar: {
         nombre: formData.nombre,
         descripcion: formData.descripcion,
-        paginaWeb: formData.paginaWeb,
-        dias_servicio: diasServicio, // El arreglo de días
+        paginaWeb: formData.paginaWeb.startsWith('http') ? formData.paginaWeb : `https://${formData.paginaWeb}`,
+        dias_servicio: diasServicio,
         num_telefonico: formData.num_telefonico,
-        horario_apertura: horarioApertura, // Añadimos los segundos
-        horario_cierre: horarioCierre, // Añadimos los segundos
-        id_categoria: idCategoria, // Usamos el ID de la categoría
-        activo: false, // Asegúrate de que el valor sea booleano
-        url: formData.url
+        horario_apertura: horarioApertura,
+        horario_cierre: horarioCierre,
+        id_categoria: idCategoria,
+        activo: false,
+        url: formData.url.startsWith('http') ? formData.url : `https://${formData.url}`
       }
     };
   
     if (this.ID) {
+      // Actualizar lugar existente
       this.service.Service_Patch('lugar', this.ID, payload).subscribe(() => {
         Swal.fire('Actualizado', 'El anuncio se actualizó correctamente', 'success');
-
-        const id_usuario = this.authService.getIdUsuario();
-        console.log('👤 ID del usuario:', id_usuario);
-        if (isNaN(id_usuario)) {
-          console.error('ID de usuario inválido');
-          return;
-        } else {
-          this.router.navigate([`/home-anunciante`, id_usuario]);
-        }    
-
+        this.router.navigate([`/home-anunciante`, this.authService.getIdUsuario()]);
       });
     } else {
+      // Crear nuevo lugar
       this.service.Service_Post('lugar', 'con-direccion', payload).subscribe({
         next: (data: any) => {
-            Swal.fire('¡Éxito!', 'Lugar creado correctamente', 'success');
-            console.log('Lugar creado:', data);
-            
-            const id_usuario = this.authService.getIdUsuario();
-            console.log('👤 ID del usuario:', id_usuario);
-            if (isNaN(id_usuario)) {
-              console.error('ID de usuario inválido');
-              return;
-            } else {
-              this.router.navigate([`/home-anunciante`, id_usuario]);
-            }        
-
+          Swal.fire('¡Éxito!', 'Lugar creado correctamente', 'success');
+          this.router.navigate([`/home-anunciante`, this.authService.getIdUsuario()]);
         },
         error: (err) => {
           console.error('Error al crear el lugar:', err);

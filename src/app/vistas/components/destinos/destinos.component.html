@@ -1,13 +1,18 @@
+Dijiste:
 <app-navbar></app-navbar>
+
+<!-- Fondo animado -->
+<div class="background-slideshow"></div>
+<div class="overlay"></div>
 
 <div class="main-content">
   <h2 class="announcements-title">Destinos</h2>
   <div class="cards-container">
 
     <!-- Verificar si hay lugares -->
-  <div *ngIf="lugares.length === 0">
-    <h3 class="announcements-title">No se encontraron destinos.</h3>
-  </div>
+    <div *ngIf="lugares.length === 0">
+      <h3 class="announcements-title">No se encontraron destinos.</h3>
+    </div>
     <div class="card" *ngFor="let lugar of lugares">
       <div (click)="vistaDetalladaDestino(lugar.id_lugar)">
         <div class="card-header">
