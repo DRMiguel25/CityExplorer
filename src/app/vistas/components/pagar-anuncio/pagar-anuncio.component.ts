@@ -14,6 +14,9 @@ import Swal from 'sweetalert2'; // ✅ Importa SweetAlert2
   styleUrls: ['./pagar-anuncio.component.scss']
 })
 export class PagoAnuncioComponent implements AfterViewInit {
+goBack() {
+throw new Error('Method not implemented.');
+}
   stripe!: Stripe;
   card!: StripeCardElement;
 

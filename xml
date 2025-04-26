@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Círculo exterior -->
+  <circle cx="50" cy="50" r="48" stroke="black" stroke-width="2" fill="none" />
+
+  <!-- Línea horizontal -->
+  <line x1="5" y1="50" x2="95" y2="50" stroke="black" stroke-width="2" />
+
+  <!-- Línea vertical -->
+  <line x1="50" y1="5" x2="50" y2="95" stroke="black" stroke-width="2" />
+
+  <!-- Triángulo interior -->
+  <path d="M50,5 L95,50 L50,95 Z" stroke="black" stroke-width="2" fill="none" />
+</svg>

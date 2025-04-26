@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { AyudaComponent } from './vistas/components/ayuda/ayuda.component';
+import { VistaDetalladaAnuncioComponent } from './vistas/components/vista-detallada-anuncio/vista-detallada-anuncio.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,16 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: ''
+  },
+  {
+    path: 'ayuda',
+    component: AyudaComponent
+  },
+  {
+    path: 'vista-detallada-anuncio/:id',
+    component: VistaDetalladaAnuncioComponent // asegúrate que este es el componente correcto
   }
+  
 ];
 
 @NgModule({

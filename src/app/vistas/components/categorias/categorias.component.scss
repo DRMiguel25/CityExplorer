@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
   margin: 0;
+  
 }
 
 .background-slideshow {
@@ -10,7 +11,7 @@ html, body {
   width: 100%;
   height: 100%;
   z-index: -1; /* Asegura que esté detrás del contenido */
-  background-image: url('https://a.travel-assets.com/findyours-php/viewfinder/images/res60/201000/201249-Parish-Church-Of-San-Miguel-Arcangel.jpg'); /* Imagen de fondo */
+ // background-image: url('blob:https://imgur.com/1e10994c-c64e-4a9e-97dd-536a3d4d7237'); /* Imagen de fondo */
   background-size: cover;
   background-position: center;
   //background-color: rgb(252, 19, 19); /* Color de respaldo (opcional) */

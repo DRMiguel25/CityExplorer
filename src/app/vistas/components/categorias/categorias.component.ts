@@ -30,9 +30,13 @@ export class CategoriasComponent implements OnInit, OnDestroy {
   }
 
   vistaCategorias(categorias: string) {
-    console.log('Categoría seleccionada:', categorias);
-    this.router.navigate(['/categoria-vista', categorias]);
+    if (categorias === 'Ayuda') {
+      this.router.navigate(['/ayuda']);
+    } else {
+      this.router.navigate(['/categoria-vista', categorias]);
+    }
   }
+  
 
   private initBackgroundChange(): void {
     const slideshow = document.querySelector('.background-slideshow') as HTMLElement;

@@ -62,6 +62,11 @@ export class HttpLaravelService {
     return this.http.get<Lugar>(`${this._url}/lugar/${id}`);
   }
 
+  Service_Get_Direccion_Publica(id: number): Observable<any> {
+    return this.http.get<any>(`${this._url}/direccion-publica/${id}`);
+  }
+  
+
   Service_Post_Pago(id_lugar: number, id_metodo_pago: number, stripeToken: string): Observable<any> {
     const body = {
       id_lugar: id_lugar,
