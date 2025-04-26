@@ -14,9 +14,9 @@ export class RegistroComponent {
   registroForm: FormGroup;
 
   roles = [
-    { id: 1, nombre: 'Administrador' },
-    { id: 2, nombre: 'Usuario' },
-    { id: 3, nombre: 'Anunciante' },
+    { id: 1, nombre: 'Usuario' },
+    { id: 2, nombre: 'Anunciante' },
+    { id: 3, nombre: 'Administrador' },
   ];
 
   constructor(
@@ -44,7 +44,7 @@ export class RegistroComponent {
     const rolId = Number(payload.id_rol); // Convertimos a número para evitar comparaciones fallidas
   
     // Validación para roles no habilitados
-    if (rolId === 1 || rolId === 2) {
+    if (rolId === 1 || rolId === 3) {
       Swal.fire({
         icon: 'info',
         title: 'Función no disponible',
