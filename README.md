@@ -145,10 +145,15 @@ Si tu aplicación se conecta a APIs externas (por ejemplo, Stripe para pagos o u
 
 Este proyecto fue desarrollado por:
 
-- **Tu Nombre**
-- **Tu Equipo o Colaboradores**
+- **Equipo de City Explorer, conformado por:
+ Miguel Angel Díaz Rivera(Lider del proyecto),
+Oscar Martin Espinosa Romero(Administrador de Base de Datos
+Alexis Armando Peralta Ramírez(Diseñador),
+José Manuel García Morales(Desarrollador),
 
-Es un proyecto académico o personal diseñado para explorar las capacidades de Angular en combinación con tecnologías modernas como **Stripe** para pagos y APIs RESTful para la gestión de datos.
+)**
+
+Este es  un proyecto académico o personal diseñado para explorar las capacidades de Angular en combinación con tecnologías modernas como **Stripe** para pagos y APIs RESTful para la gestión de datos.
 
 ---
 
