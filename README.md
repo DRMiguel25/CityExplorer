@@ -1,4 +1,5 @@
 
+---
 
 # 🌍 CityExplorer
 
@@ -14,22 +15,34 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente en tu sistema:
 - **npm**: Viene incluido con Node.js.
 - **Visual Studio Code**: Un editor de código popular. Descárgalo desde [aquí](https://code.visualstudio.com/).
 
+Además, este proyecto se conecta con una API RESTful desarrollada en Laravel. Para que la aplicación funcione correctamente, necesitarás descargar y configurar el backend correspondiente.
+
 ---
 
 ## 🛠 Instalación
 
 Sigue estos pasos para configurar el proyecto en tu entorno local:
 
-### 1. Clonar el repositorio
+### 1. Clonar el repositorio frontend
 
 ```bash
-git clone https://github.com/tu-usuario/CityExplorer.git
-cd CityExplorer
+git clone https://github.com/DRMiguel25/CityExplorer.git
 ```
 
-### 2. Instalar dependencias
+### 2. Clonar el repositorio backend
 
-Ejecuta los siguientes comandos para instalar las dependencias necesarias:
+Este proyecto requiere un backend desarrollado en Laravel. Clona el repositorio backend ejecutando:
+
+```bash
+git clone https://github.com/IngOscar19/BackEnd-CityExplorer.git
+cd BackEnd-CityExplorer
+```
+
+> **Nota:** Consulta el archivo `README` del repositorio backend para instrucciones detalladas sobre cómo configurar y ejecutar el servidor.
+
+### 3. Instalar dependencias del frontend
+
+Ejecuta los siguientes comandos para instalar las dependencias necesarias del frontend:
 
 ```bash
 npm install
@@ -40,7 +53,18 @@ npm install bootstrap
 
 > **Nota:** Asegúrate de que todas las dependencias se instalen correctamente antes de continuar.
 
-### 3. Iniciar el servidor de desarrollo
+### 4. Configurar la conexión con el backend
+
+Edita el archivo de configuración del frontend (por ejemplo, `httpservice.ts`) para especificar la URL base del backend. 
+
+```typescript
+export class HttpLaravelService {
+  private _url = 'http://127.0.0.1:8000/api';
+```
+
+Asegúrate de que el backend esté en funcionamiento y accesible en la URL especificada.
+
+### 5. Iniciar el servidor de desarrollo
 
 Para iniciar el servidor de desarrollo localmente, ejecuta:
 
@@ -139,7 +163,10 @@ Este proyecto utiliza variables de entorno para configuraciones específicas. As
 
 Si tu aplicación se conecta a APIs externas (por ejemplo, Stripe para pagos o una API RESTful para gestión de lugares turísticos), asegúrate de configurar las claves de API en el archivo de entorno correspondiente.
 
+El backend de este proyecto está disponible en [este repositorio](https://github.com/IngOscar19/BackEnd-CityExplorer.git). Asegúrate de descargarlo y configurarlo para que la aplicación funcione correctamente.
+
 ---
+
 
 ## 👨‍💻 Autor
 
@@ -162,5 +189,6 @@ Este es  un proyecto académico o personal diseñado para explorar las capacidad
 Este proyecto está bajo la licencia **MIT**.
 
 ---
+
 
 
