@@ -75,8 +75,7 @@ ng serve --ssl true --ssl-key ssl.key --ssl-cert ssl.crt
 Una vez que el servidor esté en funcionamiento, abre tu navegador y navega a:
 
 ```
-http://localhost:4200/
-```
+https://localhost:4200/proyecto-City-explorer-front-end```
 
 La aplicación se recargará automáticamente cada vez que modifiques alguno de los archivos fuente.
 
